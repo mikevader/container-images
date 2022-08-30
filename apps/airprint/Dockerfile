@@ -13,6 +13,8 @@ RUN apt update \
     && rm -rf /var/www/html \
     && ln -s /music /var/www/html
 
+USER lucy
+
 COPY ./apps/airprint/config/musicindex.conf /etc/apache2/conf-enabled/
 COPY ./apps/airprint/entrypoint.sh /entrypoint.sh
 
