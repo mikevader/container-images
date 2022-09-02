@@ -4,22 +4,21 @@ ARG VERSION
 USER root
 
 RUN apt update \
-    && apt-get install -y apache2 ssl-cert libapache2-mod-musicindex \
+    && apt-get install -y apache2 ssl-cert \
     && apt-get -y clean all \
     && mkdir -p /music /cache /app \
     && chown -R lucy:lucy /music /cache /app \
-    && a2enmod ssl musicindex \
-    && a2ensite default-ssl \
     && rm -rf /var/www/html \
     && ln -s /music /var/www/html
+
+COPY ./apps/airprint/config/musicindex.conf /etc/apache2/conf-enabled/
+COPY ./apps/airprint/entrypoint.sh /app/entrypoint.sh
+RUN ["chmod", "+x", "/app/entrypoint.sh"]
 
 USER lucy
 
 WORKDIR /music
 
 EXPOSE 80 443
-
-COPY ./apps/airprint/config/musicindex.conf /etc/apache2/conf-enabled/
-COPY ./apps/airprint/entrypoint.sh /app/entrypoint.sh
 
 CMD ["/app/entrypoint.sh"]
