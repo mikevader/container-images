@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y nodejs yarn postgresql-client
 
 RUN mkdir /app
 WORKDIR /app
-COPY ./apps/rails-demo/Gemfile Gemfile.lock ./
+COPY ./apps/rails-demo/Gemfile ./apps/rails-demo/Gemfile.lock ./
 RUN gem install bundler
 RUN bundle install
 COPY ./apps/rails-demo/. .
