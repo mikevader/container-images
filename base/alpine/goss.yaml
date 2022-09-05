@@ -12,7 +12,7 @@ file:
 
 # https://github.com/aelsabbahy/goss/blob/master/docs/manual.md#group
 group:
-  kah:
+  lucy:
     exists: true
     gid: 666
 
