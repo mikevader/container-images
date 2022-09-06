@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+## Build locally
+
+`docker build -f apps/rails-demo/Dockerfile --tag rails-demo:dev .`
