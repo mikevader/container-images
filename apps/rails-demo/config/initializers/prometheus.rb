@@ -7,7 +7,7 @@ class MyMiddleware < PrometheusExporter::Middleware
     {
       path: strip_ids_from_path(path),
       method: env["REQUEST_METHOD"],
-      status: status
+      code: status
     }
   end
 
