@@ -1,17 +1,17 @@
 ---
 process:
-  apache2:
+  cupsd:
     running: true
 
 port:
   tcp:631:
     listening: true
-#  tcp:443:
+#  tcp:80:
 #    listening: true
 
-http:
-  http://localhost:80:
-    status: 200
-#    body:
-#      - '<title>Musical index of /</title>'
+#http:
+#  http://localhost:80:
+#    status: 200
+##    body:
+##      - '<title>Musical index of /</title>'
       
