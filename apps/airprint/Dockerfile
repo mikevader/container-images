@@ -41,7 +41,7 @@ COPY ./apps/airprint/start-cups.sh /opt/airprint/
 
 RUN chmod +x /opt/airprint/healthcheck.sh /opt/airprint/start-cups.sh
 
-USER lucy
+# USER lucy
 
 HEALTHCHECK --interval=10s --timeout=3s CMD /opt/airprint/healthcheck.sh
 
