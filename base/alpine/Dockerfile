@@ -1,5 +1,5 @@
 ARG VERSION
-FROM golang:1.18.5-alpine3.16 as builder
+FROM golang:1.20.3-alpine3.16 as builder
 ARG TARGETOS
 ARG TARGETARCH
 ARG TARGETVARIANT=""
