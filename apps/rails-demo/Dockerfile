@@ -1,4 +1,6 @@
-FROM ruby:2.7.6
+FROM ruby:2.7.8
+
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 RUN curl https://deb.nodesource.com/setup_14.x | bash
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
