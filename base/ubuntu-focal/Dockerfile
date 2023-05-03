@@ -70,16 +70,20 @@ RUN \
 
 ENV LANG en_US.UTF-8
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008,DL3015
 RUN \
-  export GO_VERSION=1.18 \
-  && export GOPATH=/go \
+  GO_VERSION=1.18 \
+  && export GO_VERSION \
+  && GOPATH=/go \
+  && export GOPATH \
   && \
   apt-get update -yq \
   && apt-get install -yq \
     gnupg \
     lsb-release \
-  && export DISTRO="$(lsb_release -s -c)" \
+  && DISTRO="$(lsb_release -s -c)" \
+  && export DISTRO \
   && apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 52B59B1571A79DBC054901C0F6BC817356A3D45E \
   && echo "deb http://ppa.launchpad.net/longsleep/golang-backports/ubuntu $DISTRO main" | tee /etc/apt/sources.list.d/gosource.list \
   && echo "deb-src http://ppa.launchpad.net/longsleep/golang-backports/ubuntu $DISTRO main" | tee -a /etc/apt/sources.list.d/gosource.list \
