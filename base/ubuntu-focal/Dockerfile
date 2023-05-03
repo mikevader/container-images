@@ -122,6 +122,6 @@ COPY ./base/ubuntu-jammy/shim /shim
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 
 LABEL \
-  org.opencontainers.image.base.name="ghcr.io/mikevader/ubuntu-jammy" \
+  org.opencontainers.image.base.name="ghcr.io/mikevader/ubuntu-focal" \
   org.opencontainers.image.base.version="${VERSION}" \
   org.opencontainers.image.authors="Michael Muehlebach <michael@anduin.ch>"
