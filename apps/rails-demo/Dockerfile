@@ -12,6 +12,7 @@ WORKDIR /app
 COPY ./apps/rails-demo/Gemfile ./apps/rails-demo/Gemfile.lock ./
 RUN gem install bundler
 RUN bundle install
+RUN yarn build
 COPY ./apps/rails-demo/. .
 
 RUN rake assets:precompile
