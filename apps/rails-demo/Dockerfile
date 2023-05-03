@@ -10,9 +10,9 @@ RUN apt-get update && apt-get install -y nodejs yarn postgresql-client
 RUN mkdir /app
 WORKDIR /app
 COPY ./apps/rails-demo/Gemfile ./apps/rails-demo/Gemfile.lock ./
-RUN gem install bundler
-RUN bundle install
-RUN yarn build
+RUN gem install bundler:2.2.25
+RUN bundle install \
+ && yarn build
 COPY ./apps/rails-demo/. .
 
 RUN rake assets:precompile
