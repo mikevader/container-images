@@ -91,6 +91,9 @@ GEM
       activesupport (>= 5.0)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
+    importmap-rails (1.1.6)
+      actionpack (>= 6.0.0)
+      railties (>= 6.0.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -228,6 +231,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  importmap-rails (~> 1.1.6)
   jbuilder (~> 2.7)
   jsbundling-rails (~> 1.1.1)
   listen (~> 3.3)
@@ -238,7 +242,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   spring
-  sprockets-rails
+  sprockets-rails (~> 3.4.2)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data
