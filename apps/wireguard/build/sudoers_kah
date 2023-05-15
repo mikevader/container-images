@@ -1,0 +1,17 @@
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/iptables-legacy-save
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables-legacy-save
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/iptables-nft-save
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables-nft-save
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/iptables -F OUTPUT
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables -F OUTPUT
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/iptables -A OUTPUT *
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/ip6tables -A OUTPUT *
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/ip -4 route add *
+lucy ALL= EXEC: NOPASSWD: /usr/sbin/ip -6 route add *
+lucy ALL= EXEC: NOPASSWD: /usr/bin/wg show *
+lucy ALL= EXEC: NOPASSWD: /usr/bin/wg-quick up *
+lucy ALL= EXEC: NOPASSWD: /usr/bin/wg-quick down *
+lucy ALL= EXEC: NOPASSWD: /usr/bin/find /etc/wireguard -type f *
+lucy ALL= EXEC: NOPASSWD: /usr/bin/update-alternatives --set iptables *
+lucy ALL= EXEC: NOPASSWD: /usr/bin/update-alternatives --set ip6tables *
+Defaults env_keep +="TZ"
