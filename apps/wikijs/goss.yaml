@@ -1,0 +1,21 @@
+file:
+  /app/wiki/config.yml:
+    exists: true
+    mode: "0777"
+    size: 18
+    owner: lucy
+    group: lucy
+    linked-to: /config/config.yml
+    filetype: symlink
+    contains: []
+package:
+  nodejs:
+    installed: true
+port:
+  tcp:3000:
+    listening: true
+    ip:
+    - 0.0.0.0
+process:
+  node:
+    running: true
