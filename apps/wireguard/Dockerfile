@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:76fc28e621c47226591e7d2d70b9ac186ab0303340c335d3a0dd4aeb15112946
+FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:c698a4975ed060620884142e2c2a0aaa5644d5c821e25366a3054ec43cb0e856
 
 ARG VERSION
 USER root
