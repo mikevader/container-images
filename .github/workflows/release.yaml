@@ -93,12 +93,12 @@ jobs:
           fi
           if [ "${{github.event_name}}" == "pull_request" ]; then
             echo ::set-output name=push::false
-            echo ::set-output name=cache_from::"type=local,src=/tmp/.buildx-cache"
+            echo ::set-output name=cache_from::"type=gah"
             echo ::set-output name=cache_to::""
           else
             echo ::set-output name=push::true
-            echo ::set-output name=cache_from::"type=local,src=/tmp/.buildx-cache"
-            echo ::set-output name=cache_to::"type=local,dest=/tmp/.buildx-cache,mode=max"
+            echo ::set-output name=cache_from::"type=gah"
+            echo ::set-output name=cache_to::"type=gah,mode=max"
           fi
 
       - name: Set up QEMU
@@ -123,13 +123,13 @@ jobs:
           version: latest
           driver-opts: image=moby/buildkit:latest
 
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ secrets.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ matrix.container }}
-          restore-keys: |
-            ${{ secrets.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ matrix.container }}
+      # - name: Cache Docker layers
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: /tmp/.buildx-cache
+      #     key: ${{ secrets.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ matrix.container }}
+      #     restore-keys: |
+      #       ${{ secrets.DOCKER_REGISTRY }}/${{ github.repository_owner }}/${{ matrix.container }}
 
       # Install the GOSS testing framework
       - name: Set up goss/dgoss
