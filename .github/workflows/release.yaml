@@ -93,12 +93,12 @@ jobs:
           fi
           if [ "${{github.event_name}}" == "pull_request" ]; then
             echo ::set-output name=push::false
-            echo ::set-output name=cache_from::"type=gah"
+            echo ::set-output name=cache_from::"type=gha"
             echo ::set-output name=cache_to::""
           else
             echo ::set-output name=push::true
-            echo ::set-output name=cache_from::"type=gah"
-            echo ::set-output name=cache_to::"type=gah,mode=max"
+            echo ::set-output name=cache_from::"type=gha"
+            echo ::set-output name=cache_to::"type=gha,mode=max"
           fi
 
       - name: Set up QEMU
