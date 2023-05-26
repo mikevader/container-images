@@ -4,6 +4,16 @@
   ],
   packageRules: [
     {
+      description: "Auto-merge rails-demo gems",
+      matchDatasources: ["rubygems"],
+      automerge: true,
+      automergeType: "branch",
+      requiredStatusChecks: null,
+      matchPaths: [
+        "apps/rails-demo/**"
+      ]
+    },
+    {
       description: "Auto-merge Ubuntu base updates",
       matchDatasources: ["docker"],
       automerge: true,
