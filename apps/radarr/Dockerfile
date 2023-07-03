@@ -10,6 +10,7 @@ ENV \
   RADARR__BRANCH="master" \
   RADARR__PORT="7878"
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008,DL3015
 RUN \
   apt-get -qq update \

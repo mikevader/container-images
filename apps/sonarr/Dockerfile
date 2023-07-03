@@ -8,6 +8,7 @@ ENV \
   SONARR__BRANCH="main" \
   SONARR__PORT="8989"
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008,DL3015,SC2086
 RUN \
   apt-get -qq update \
