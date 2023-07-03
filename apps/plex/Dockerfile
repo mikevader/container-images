@@ -1,4 +1,4 @@
-FROM ghcr.io/k8s-at-home/ubuntu-focal:rolling@sha256:c001f386f4860b3353dcb40dceafa4274bd7b77c8aa2def745fec26d58c8a0fd
+FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:c001f386f4860b3353dcb40dceafa4274bd7b77c8aa2def745fec26d58c8a0fd
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -11,9 +11,9 @@ ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
     PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR="/config/Library/Application Support" \
     PLEX_MEDIA_SERVER_HOME="/usr/lib/plexmediaserver" \
     PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS="6" \
-    PLEX_MEDIA_SERVER_USER="kah" \
+    PLEX_MEDIA_SERVER_USER="lucy" \
     PLEX_MEDIA_SERVER_INFO_VENDOR="Docker" \
-    PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (k8s-at-home)"
+    PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (mikevader)"
 
 # hadolint ignore=DL3008,DL3015,SC2039,SC2086
 RUN \
@@ -63,11 +63,11 @@ RUN \
     /tmp/* \
     /var/lib/apt/lists/* \
     /var/tmp/ \
-  && chown -R kah:kah "${PLEX_MEDIA_SERVER_HOME}" \
+  && chown -R lucy:lucy "${PLEX_MEDIA_SERVER_HOME}" \
   && chmod -R u=rwX,go=rX "${PLEX_MEDIA_SERVER_HOME}" \
   && printf "umask %d" "${UMASK}" >> /etc/bash.bashrc
 
-USER kah
+USER lucy
 
 WORKDIR "${PLEX_MEDIA_SERVER_HOME}"
 
