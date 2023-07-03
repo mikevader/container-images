@@ -15,6 +15,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES="compute,video,utility" \
     PLEX_MEDIA_SERVER_INFO_VENDOR="Docker" \
     PLEX_MEDIA_SERVER_INFO_DEVICE="Docker Container (mikevader)"
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008,DL3015,SC2039,SC2086
 RUN \
   apt-get -qq update \
