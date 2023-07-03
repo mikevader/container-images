@@ -1,0 +1,12 @@
+---
+process:
+  mono:
+    running: true
+
+port:
+  tcp:8989:
+    listening: true
+
+http:
+  http://localhost:8989:
+    status: 200
