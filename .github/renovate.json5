@@ -5,7 +5,7 @@
   packageRules: [
     {
       description: "Auto-merge rails-demo gems",
-      matchDatasources: ["rubygems"],
+      matchDatasources: ["rubygems", "npm"],
       automerge: true,
       automergeType: "branch",
       requiredStatusChecks: null,
