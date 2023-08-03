@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:8f14cd9f72d9832fa0181caff7323372ddb1e985997f384d50fe9c30f1f9ca3d
+FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:a960734a5d07488f2db482e67053c294fd5946e4dfbcaf67a154d0698a53a6ac
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
