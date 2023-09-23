@@ -40,7 +40,7 @@ jobs:
       - id: reduce
         run: |
           CONTAINERS=$(jq --raw-output '.changed_files | fromjson | .[] |= sub("(?<filepath>(?<first_directory>(?<root1>[/]?)[^/]+/)(?<second_directory>(?<root2>[/]?)[^/]+)(?<extra_paths>.+))"; "\(.second_directory)") | unique' changes.json)
-          echo ::set-output name=containers::${CONTAINERS}
+          echo "containers=${CONTAINERS}" >> "$GITHUB_OUTPUT"
 
   hadolint:
     name: Run hadolint
@@ -75,30 +75,30 @@ jobs:
         id: prep
         run: |
           BUILD_DATE=$(date --rfc-3339=seconds --utc)
-          echo ::set-output name=build_date::${BUILD_DATE}
+          echo "build_date=${BUILD_DATE}" >> "$GITHUB_OUTPUT"
           if test -f "./apps/${{ matrix.container }}/Dockerfile"; then
             CATEGORY="apps"
           else
             CATEGORY="base"
           fi
-          echo ::set-output name=category::${CATEGORY}
+          echo "category=${CATEGORY}" >> "$GITHUB_OUTPUT"
           VERSION=$(cat ./${CATEGORY}/${{ matrix.container }}/VERSION)
-          echo ::set-output name=version::${VERSION}
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
           PLATFORM=$(cat ./${CATEGORY}/${{ matrix.container }}/PLATFORM)
-          echo ::set-output name=platform::${PLATFORM}
+          echo "platform=${PLATFORM}" >> "$GITHUB_OUTPUT"
           if test -f "./${CATEGORY}/${{ matrix.container }}/goss.yaml"; then
-            echo ::set-output name=goss::true
+            echo "goss=true" >> "$GITHUB_OUTPUT"
           else
-            echo ::set-output name=goss::false
+            echo "goss=false" >> "$GITHUB_OUTPUT"
           fi
           if [ "${{github.event_name}}" == "pull_request" ]; then
-            echo ::set-output name=push::false
-            echo ::set-output name=cache_from::"type=gha"
-            echo ::set-output name=cache_to::""
+            echo "push=false" >> "$GITHUB_OUTPUT"
+            echo "cache_from='type=gha'" >> "$GITHUB_OUTPUT"
+            echo "cache_to=''" >> "$GITHUB_OUTPUT"
           else
-            echo ::set-output name=push::true
-            echo ::set-output name=cache_from::"type=gha"
-            echo ::set-output name=cache_to::"type=gha,mode=max"
+            echo "push=true" >> "$GITHUB_OUTPUT"
+            echo "cache_from='type=gha'" >> "$GITHUB_OUTPUT"
+            echo "cache_to='type=gha,mode=max'" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up QEMU
