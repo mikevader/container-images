@@ -1,25 +1,27 @@
 {
-  extends: [
-    "config:base"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "mergeConfidence:all-badges"
   ],
-  packageRules: [
+  "packageRules": [
     {
-      description: "Auto-merge rails-demo gems",
-      matchDatasources: ["rubygems", "npm"],
-      automerge: true,
-      automergeType: "branch",
-      requiredStatusChecks: null,
-      matchPaths: [
+      "description": "Auto-merge rails-demo gems",
+      "matchDatasources": ["rubygems", "npm"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchPaths": [
         "apps/rails-demo/**"
       ]
     },
     {
-      description: "Auto-merge Ubuntu base updates",
-      matchDatasources: ["docker"],
-      automerge: true,
-      automergeType: "branch",
-      requiredStatusChecks: null,
-      matchPackageNames: [
+      "description": "Auto-merge Ubuntu base updates",
+      "matchDatasources": ["docker"],
+      "automerge": true,
+      "automergeType": "branch",
+      "requiredStatusChecks": null,
+      "matchPackageNames": [
         "ghcr.io/mikevader/ubuntu-focal",
         "ghcr.io/mikevader/ubuntu-jammy"
       ]
