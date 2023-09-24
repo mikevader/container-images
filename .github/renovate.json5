@@ -1,9 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
+    ":gitSignOff",
     "mergeConfidence:all-badges"
   ],
+  "timezone": "Europe/Zurich",
+  "dependencyDashboardTitle": "Renovate Dashboard",
+  "assigneesFromCodeOwners": true,
+  "reviewersFromCodeOwners": true,
+  "suppressNotifications": ["prIgnoreNotification"],
   "packageRules": [
     {
       "description": "Auto-merge rails-demo gems",
