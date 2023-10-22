@@ -40,7 +40,7 @@ jobs:
       - id: reduce
         run: |
           CONTAINERS=$(jq --raw-output '.changed_files | fromjson | .[] |= sub("(?<filepath>(?<first_directory>(?<root1>[/]?)[^/]+/)(?<second_directory>(?<root2>[/]?)[^/]+)(?<extra_paths>.+))"; "\(.second_directory)") | unique' changes.json)
-          echo "containers<<EOF" >> "$GITHUB_OUTPUT
+          echo "containers<<EOF" >> $GITHUB_OUTPUT
           echo "$CONTAINERS" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
