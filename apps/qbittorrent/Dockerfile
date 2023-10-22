@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-jammy:rolling@sha256:8330afb7412e42889c87ab55addcb51bc4a6e51a3bb8255b74e6775ad44f177c
+FROM ghcr.io/mikevader/ubuntu-jammy:vjammy-20230816
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -26,7 +26,7 @@ RUN \
     'linux/amd64') export ARCH="x86_64" ;; \
     'linux/arm64') export ARCH="aarch64" ;; \
   esac \
-  && curl -fsSL -o /app/qbittorrent-nox "https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/${ARCH}-cmake-qbittorrent-nox" \
+  && curl -fsSL -o /app/qbittorrent-nox "https://github.com/userdocs/qbittorrent-nox-static/releases/latest/download/${ARCH}-qbittorrent-nox" \
   && chmod +x /app/qbittorrent-nox \
   && \
   apt-get remove -y ${EXTRA_INSTALL_ARG} \
