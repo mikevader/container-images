@@ -95,12 +95,12 @@ jobs:
           fi
           if [ "${{github.event_name}}" == "pull_request" ]; then
             echo "push=false" >> "$GITHUB_OUTPUT"
-            echo "cache_from='type=gha'" >> "$GITHUB_OUTPUT"
-            echo "cache_to=''" >> "$GITHUB_OUTPUT"
+            echo "cache_from=type=gha" >> "$GITHUB_OUTPUT"
+            echo "cache_to=" >> "$GITHUB_OUTPUT"
           else
             echo "push=true" >> "$GITHUB_OUTPUT"
-            echo "cache_from='type=gha'" >> "$GITHUB_OUTPUT"
-            echo "cache_to='type=gha,mode=max'" >> "$GITHUB_OUTPUT"
+            echo "cache_from=type=gha" >> "$GITHUB_OUTPUT"
+            echo "cache_to=type=gha,mode=max" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Set up QEMU
