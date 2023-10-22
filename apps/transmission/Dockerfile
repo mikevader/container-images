@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:a960734a5d07488f2db482e67053c294fd5946e4dfbcaf67a154d0698a53a6ac
+FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:a960734a5d07488f2db482e67053c294fd5946e4dfbcaf67a154d0698a53a6ac as builder
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -43,7 +43,7 @@ RUN \
   && make -s \
   && make install
 
-FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:c001f386f4860b3353dcb40dceafa4274bd7b77c8aa2def745fec26d58c8a0fd
+FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:a960734a5d07488f2db482e67053c294fd5946e4dfbcaf67a154d0698a53a6ac
 
 ARG TARGETPLATFORM
 ARG VERSION
