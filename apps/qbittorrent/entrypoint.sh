@@ -3,7 +3,7 @@
 set -e
 
 #shellcheck disable=SC1091
-source "/shim/umask.sh"
+source "/shim/unmask.sh"
 source "/shim/vpn.sh"
 
 downloadsPath="/downloads"
