@@ -1,4 +1,4 @@
-FROM ghcr.io/k8s-at-home/ubuntu-jammy:rolling@sha256:d07c99ab3a87b76e4a8460d5d6c2c3ff18d55c20f84e777aa3c2db698e1db075
+FROM ghcr.io/mikevader/ubuntu-jammy:rolling@sha256:a09a9c3b82b09c9a56eee13d8bb9bf12d42fad538125885c8418f336cca1fef2
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -49,11 +49,11 @@ USER lucy
 
 EXPOSE ${PROWLARR__PORT}/tcp
 
-COPY ./apps/prowlarr-${PROWLARR__BRANCH}/config.xml.tmpl /app/config.xml.tmpl
-COPY ./apps/prowlarr-${PROWLARR__BRANCH}/entrypoint.sh /entrypoint.sh
+COPY ./apps/prowlarr/config.xml.tmpl /app/config.xml.tmpl
+COPY ./apps/prowlarr/entrypoint.sh /entrypoint.sh
 CMD ["/entrypoint.sh"]
 
 LABEL \
-  org.opencontainers.image.title="${PROWLARR__INSTANCE_NAME} - ${PROWLARR__BRANCH}" \
+  org.opencontainers.image.title="${PROWLARR__INSTANCE_NAME}" \
   org.opencontainers.image.source="https://github.com/Prowlarr/Prowlarr" \
   org.opencontainers.image.version="${VERSION}"
