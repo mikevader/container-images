@@ -3,7 +3,7 @@
   <UrlBase>${RADARR__URL_BASE}</UrlBase>
   <Branch>${RADARR__BRANCH}</Branch>
   <ApiKey>${RADARR__API_KEY}</ApiKey>
-  <AuthenticationMethod>${RADARR__AUTHENTICATION_METHOD:-None}</AuthenticationMethod>
+  <AuthenticationMethod>${RADARR__AUTHENTICATION_METHOD:-External}</AuthenticationMethod>
   <AuthenticationRequired>${RADARR__AUTHENTICATION_REQUIRED:-DisabledForLocalAddresses}</AuthenticationRequired>
   <InstanceName>${RADARR__INSTANCE_NAME}</InstanceName>
   <PostgresUser>${RADARR__POSTGRES_USER}</PostgresUser>
@@ -11,7 +11,7 @@
   <PostgresPort>${RADARR__POSTGRES_PORT:-5432}</PostgresPort>
   <PostgresHost>${RADARR__POSTGRES_HOST}</PostgresHost>
   <PostgresMainDb>${RADARR__POSTGRES_MAIN_DB}</PostgresMainDb>
-  <PostgresLogDb>${RADARR__POSTGRES_MAIN_LOG}</PostgresLogDb>
+  <PostgresLogDb>${RADARR__POSTGRES_LOG_DB}</PostgresLogDb>
   <Port>${RADARR__PORT}</Port>
   <BindAddress>*</BindAddress>
   <LaunchBrowser>False</LaunchBrowser>
@@ -20,4 +20,6 @@
   <SslCertPath></SslCertPath>
   <SslCertPassword></SslCertPassword>
   <UpdateMechanism>BuiltIn</UpdateMechanism>
+  <AnalyticsEnabled>${RADARR__ANALYTICS_ENABLED}</AnalyticsEnabled>
+  <Theme>${RADARR__THEME:-auto}</Theme>
 </Config>
