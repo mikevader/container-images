@@ -4,7 +4,7 @@ process:
     running: true
 
 port:
-  tcp:7878:
+  tcp6:7878:
     listening: true
 
 http:
