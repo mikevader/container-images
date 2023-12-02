@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:aab8157ff945ef41426270cce8b1edb599d45ae812e918f9197d1746157f14b5
+FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:108bfbceca895ddf4af2ec57bbbeb80ae63294567b74e549c91378626a65d8f8
 
 ### Based on https://github.com/linuxserver/docker-wikijs
 # Give ourselves root for a bit
