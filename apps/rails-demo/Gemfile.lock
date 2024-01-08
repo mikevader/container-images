@@ -145,7 +145,7 @@ GEM
     nokogiri (1.16.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    prometheus_exporter (2.0.8)
+    prometheus_exporter (2.1.0)
       webrick
     psych (5.1.2)
       stringio
