@@ -15,7 +15,7 @@
       "description": "Auto-merge rails-demo gems",
       "matchDatasources": ["rubygems", "npm"],
       "automerge": true,
-      "automergeType": "branch",
+      "automergeType": "pr",
       "requiredStatusChecks": null,
       "matchPaths": [
         "apps/rails-demo/**"
@@ -25,7 +25,7 @@
       "description": "Auto-merge Ubuntu base updates",
       "matchDatasources": ["docker"],
       "automerge": true,
-      "automergeType": "branch",
+      "automergeType": "pr",
       "requiredStatusChecks": null,
       "matchPackageNames": [
         "ghcr.io/mikevader/ubuntu-focal",
