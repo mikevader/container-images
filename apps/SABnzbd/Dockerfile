@@ -4,7 +4,7 @@ ARG VERSION
 USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# hadolint ignore=DL3008,DL3013,DL3015,SC2086
+# hadolint ignore=DL3008,DL3008,DL3013,DL3015,SC2086
 RUN \
   export EXTRA_INSTALL_ARG="build-essential libffi-dev libssl-dev python3-dev python3-pip"; \
   apt-get -qq update \
