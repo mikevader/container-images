@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-jammy:rolling@sha256:e1077553aea87a1d41055400d836fefd6f557b03f4e52bdaf293c6b830d3941b
+FROM ghcr.io/mikevader/ubuntu-jammy:rolling
 
 ARG VERSION
 USER root
