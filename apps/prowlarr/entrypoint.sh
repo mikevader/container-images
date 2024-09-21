@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+#shellcheck disable=SC1091
+source "/shim/umask.sh"
+source "/shim/vpn.sh"
+
+# Discover existing configuration settings for backwards compatibility
+if [[ -f /config/config.xml ]]; then
+    current_log_level="$(xmlstarlet sel -t -v "//LogLevel" -nl /config/config.xml)"
+    current_url_base="$(xmlstarlet sel -t -v "//UrlBase" -nl /config/config.xml)"
+    current_branch="$(xmlstarlet sel -t -v "//Branch" -nl /config/config.xml)"
+    current_api_key="$(xmlstarlet sel -t -v "//ApiKey" -nl /config/config.xml)"
+    current_authentication_method="$(xmlstarlet sel -t -v "//AuthenticationMethod" -nl /config/config.xml)"
+    current_authentication_required="$(xmlstarlet sel -t -v "//AuthenticationRequired" -nl /config/config.xml)"
+    current_instance_name="$(xmlstarlet sel -t -v "//InstanceName" -nl /config/config.xml)"
+    current_postgres_user="$(xmlstarlet sel -t -v "//PostgresUser" -nl /config/config.xml)"
+    current_postgres_password="$(xmlstarlet sel -t -v "//PostgresPassword" -nl /config/config.xml)"
+    current_postgres_port="$(xmlstarlet sel -t -v "//PostgresPort" -nl /config/config.xml)"
+    current_postgres_host="$(xmlstarlet sel -t -v "//PostgresHost" -nl /config/config.xml)"
+    current_postgres_main_db="$(xmlstarlet sel -t -v "//PostgresMainDb" -nl /config/config.xml)"
+    current_postgres_log_db="$(xmlstarlet sel -t -v "//PostgresLogDb" -nl /config/config.xml)"
+fi
+
+# Update config.xml with environment variables
+/usr/local/bin/envsubst < /app/config.xml.tmpl > /config/config.xml
+
+# Override configuation values from existing config.xml if there are no PROWLARR__ variables set
+
+
+[[ -z "${PROWLARR__LOG_LEVEL}" && -n "${current_log_level}" ]] && xmlstarlet edit --inplace --update //LogLevel -v "${current_log_level}" /config/config.xml
+[[ -z "${PROWLARR__URL_BASE}" && -n "${current_url_base}" ]] && xmlstarlet edit --inplace --update //UrlBase -v "${current_url_base}" /config/config.xml
+[[ -z "${PROWLARR__BRANCH}" && -n "${current_branch}" ]] && xmlstarlet edit --inplace --update //Branch -v "${current_branch}" /config/config.xml
+[[ -z "${PROWLARR__API_KEY}" && -n "${current_api_key}" ]] && xmlstarlet edit --inplace --update //ApiKey -v "${current_api_key}" /config/config.xml
+[[ -z "${PROWLARR__AUTHENTICATION_METHOD}" && -n "${current_authentication_method}" ]] && xmlstarlet edit --inplace --update //AuthenticationMethod -v "${current_authentication_method}" /config/config.xml
+[[ -z "${PROWLARR__AUTHENTICATION_REQUIRED}" && -n "${current_authentication_required}" ]] && xmlstarlet edit --inplace --update //AuthenticationRequired -v "${current_authentication_required}" /config/config.xml
+[[ -z "${PROWLARR__INSTANCE_NAME}" && -n "${current_instance_name}" ]] && xmlstarlet edit --inplace --update //InstanceName -v "${current_instance_name}" /config/config.xml
+
+# BindAddress, LaunchBrowser, Port, EnableSsl, SslPort, SslCertPath, SslCertPassword, UpdateMechanism
+# have been omited because their configuration is not really needed in a container environment
+
+if [[ "${PROWLARR__LOG_LEVEL}" == "debug" || "${current_log_level}" == "debug" ]]; then
+    echo "Starting with the following configuration..."
+    xmlstarlet format --omit-decl /config/config.xml
+fi
+
+exec /app/Prowlarr --nobrowser --data=/config ${EXTRA_ARGS}
