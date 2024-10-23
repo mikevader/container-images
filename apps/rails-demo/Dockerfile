@@ -1,4 +1,4 @@
-FROM ruby:3.3.3
+FROM ruby:3.3.5
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
