@@ -15,14 +15,16 @@ ENV \
   APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn \
   UMASK=0002
 
-RUN adduser lucy \
+RUN \
+  adduser lucy \
   --uid 666 \
   --group \
   --system \
   --disabled-password \
   --no-create-home
 
-RUN mkdir -p /config \
+RUN \
+  mkdir -p /config \
   && chown -R lucy:lucy /config \
   && chmod -R 775 /config
 
