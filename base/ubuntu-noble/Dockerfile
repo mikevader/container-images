@@ -15,15 +15,14 @@ ENV \
   APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn \
   UMASK=0002
 
-RUN \
-  adduser lucy \
+RUN adduser lucy \
   --uid 666 \
   --group \
   --system \
   --disabled-password \
-  --no-create-home \
-  && \
-  mkdir -p /config \
+  --no-create-home
+
+RUN mkdir -p /config \
   && chown -R lucy:lucy /config \
   && chmod -R 775 /config
 
@@ -73,7 +72,7 @@ ENV LANG en_US.UTF-8
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3008,DL3015
 RUN \
-  GO_VERSION=1.18 \
+  GO_VERSION=1.24 \
   && export GO_VERSION \
   && GOPATH=/go \
   && export GOPATH \
