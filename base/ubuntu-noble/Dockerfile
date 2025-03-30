@@ -8,19 +8,18 @@ ENV TARGETPLATFORM=${TARGETPLATFORM:-linux/amd64}
 
 # DEBIAN_FRONTEND: https://askubuntu.com/questions/972516/debian-frontend-environment-variable
 # APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE: http://stackoverflow.com/questions/48162574/ddg#49462622
-ENV \
-  VERSION="${VERSION}" \
-  DEBCONF_NONINTERACTIVE_SEEN=true \
-  DEBIAN_FRONTEND="noninteractive" \
-  APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn \
-  UMASK=0002
+#ENV \
+#  VERSION="${VERSION}" \
+#  DEBCONF_NONINTERACTIVE_SEEN=true \
+#  DEBIAN_FRONTEND="noninteractive" \
+#  APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=DontWarn \
+#  UMASK=0002
 
 RUN \
-  adduser lucy \
-  --uid 666 \
-  --group \
+  useradd lucy \
   --system \
-  --disabled-password \
+  --uid 666 \
+  --user-group \
   --no-create-home
 
 RUN \
