@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling
+FROM ghcr.io/mikevader/ubuntu-noble:vnoble-20250127
 
 ### Based on https://github.com/linuxserver/docker-wikijs
 # Give ourselves root for a bit
