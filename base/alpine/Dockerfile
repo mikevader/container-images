@@ -39,21 +39,18 @@ USER root
 #hadolint ignore=DL3018
 RUN \
     apk add --no-cache \
-        # 656 kB           # 1.28 MB     # 632 kB
-        ca-certificates    bash          bind-tools \
-        # 256 kB           # 156 kB      # 40 kB
-        curl               iputils       jo \
-        # 564 kB           # 200 kB      # 316 kB
-        jq                 moreutils     nano \
-        # 76 kB
+        ca-certificates \
+        bash \
+        bind-tools \
+        curl \
+        iputils \
+        jo \
+        jq \
+        nano \
         pv \
-        # 36 kB            # 3.3 MB      # 320 kB
-        tini               tzdata        unzip \
-        # 16 kB            # 480 kB
-        util-linux         wget \
-    && \
-    # 264 kB
-    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.20/main unrar
+        tini \
+        tzdata \
+        util-linux
 
 #hadolint ignore=DL3018
 RUN \
@@ -70,9 +67,21 @@ RUN \
     && ln -s /usr/bin/nano /usr/local/bin/nano \
     && ln -s /usr/bin/nano /usr/local/bin/neovim \
     && ln -s /usr/bin/nano /usr/local/bin/emacs \
-    && rm -rf /tmp/*
+    && rm -rf /tmp/* \
+
+USER lucy
 
 VOLUME ["/config"]
+
 COPY ./base/alpine/scripts /scripts
 COPY --from=builder /go/bin/envsubst /usr/local/bin/envsubst
+
 ENTRYPOINT ["/sbin/tini", "--"]
+
+LABEL \
+  org.opencontainers.image.base.name="ghcr.io/mikevader/alpine" \
+  org.opencontainers.image.base.version="${VERSION}" \
+  org.opencontainers.image.authors="Michael Muehlebach <michael@anduin.ch>" \
+  org.opencontainers.image.description="This image is meant to be used as base image for k8s images." \
+  org.opencontainers.image.source=https://github.com/mikevader/container-images \
+  org.opencontainers.image.licenses='GPL-3.0-or-later'
