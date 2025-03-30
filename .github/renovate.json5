@@ -1,36 +1,43 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended",
-    ":gitSignOff",
-    "mergeConfidence:all-badges"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    ':gitSignOff',
+    'mergeConfidence:all-badges',
   ],
-  "timezone": "Europe/Zurich",
-  "dependencyDashboardTitle": "Renovate Dashboard",
-  "assigneesFromCodeOwners": true,
-  "reviewersFromCodeOwners": true,
-  "suppressNotifications": ["prIgnoreNotification"],
-  "packageRules": [
+  timezone: 'Europe/Zurich',
+  dependencyDashboardTitle: 'Renovate Dashboard',
+  assigneesFromCodeOwners: true,
+  reviewersFromCodeOwners: true,
+  suppressNotifications: [
+    'prIgnoreNotification',
+  ],
+  packageRules: [
     {
-      "description": "Auto-merge rails-demo gems",
-      "matchDatasources": ["rubygems", "npm"],
-      "automerge": true,
-      "automergeType": "pr",
-      "requiredStatusChecks": null,
-      "matchPaths": [
-        "apps/rails-demo/**"
-      ]
+      description: 'Auto-merge rails-demo gems',
+      matchDatasources: [
+        'rubygems',
+        'npm',
+      ],
+      automerge: true,
+      automergeType: 'pr',
+      ignoreTests: true,
+      matchFileNames: [
+        'apps/rails-demo/**',
+      ],
     },
     {
-      "description": "Auto-merge Ubuntu base updates",
-      "matchDatasources": ["docker"],
-      "automerge": true,
-      "automergeType": "pr",
-      "requiredStatusChecks": null,
-      "matchPackageNames": [
-        "ghcr.io/mikevader/ubuntu-focal",
-        "ghcr.io/mikevader/ubuntu-jammy"
-      ]
-    }
-  ]
+      description: 'Auto-merge Ubuntu base updates',
+      matchDatasources: [
+        'docker',
+      ],
+      automerge: true,
+      automergeType: 'pr',
+      ignoreTests: true,
+      matchPackageNames: [
+        'ghcr.io/mikevader/ubuntu-focal',
+        'ghcr.io/mikevader/ubuntu-jammy',
+      ],
+    },
+  ],
 }
