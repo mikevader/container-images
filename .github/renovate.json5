@@ -37,6 +37,7 @@
       matchPackageNames: [
         'ghcr.io/mikevader/ubuntu-focal',
         'ghcr.io/mikevader/ubuntu-jammy',
+        'ghcr.io/mikevader/ubuntu-noble',
       ],
     },
   ],
