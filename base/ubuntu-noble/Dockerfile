@@ -44,16 +44,13 @@ RUN \
   && \
   apt-get -qq update \
   && \
-  apt-get install -y -no-install-recommends \
+  apt-get install -y \
     bash \
     ca-certificates \
     curl \
-    locales \
     tini \
     tzdata \
     vim-tiny \
-  && \
-  localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 \
   && ln -s /usr/bin/vim.tiny /usr/local/bin/vi \
   && ln -s /usr/bin/vim.tiny /usr/local/bin/vim \
   && ln -s /usr/bin/vim.tiny /usr/local/bin/nano \
@@ -81,4 +78,6 @@ LABEL \
   org.opencontainers.image.base.name="ghcr.io/mikevader/ubuntu-noble" \
   org.opencontainers.image.base.version="${VERSION}" \
   org.opencontainers.image.authors="Michael Muehlebach <michael@anduin.ch>" \
-  org.opencontainers.image.description="Some description"
+  org.opencontainers.image.description="This image is meant to be used as base image for k8s images." \
+  org.opencontainers.image.source=https://github.com/mikevader/container-images \
+  org.opencontainers.image.licenses='GPL-3.0-or-later'
