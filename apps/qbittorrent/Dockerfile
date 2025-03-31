@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-jammy:vjammy-20230816
+FROM ghcr.io/mikevader/ubuntu-noble:vnoble-20250127
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
