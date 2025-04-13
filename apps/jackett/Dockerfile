@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling@sha256:ced640a615757c12ec2ac50c2e0153e9cc85c559f5fd64df3eeb4a28ca12b56b
+FROM ghcr.io/mikevader/ubuntu-noble:vnoble-20250127
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -15,8 +15,8 @@ RUN \
   apt-get -qq update \
   && \
   apt-get -qq install -y \
-    libicu66 \
-    libssl1.1 \
+    libicu74 \
+    libssl3t64 \
   && \
   case "${TARGETPLATFORM}" in \
     'linux/amd64') export ARCH='AMDx64' ;; \
