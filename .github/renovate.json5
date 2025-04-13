@@ -1,16 +1,7 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
-    'config:recommended',
-    ':gitSignOff',
-    'mergeConfidence:all-badges',
-  ],
-  timezone: 'Europe/Zurich',
-  dependencyDashboardTitle: 'Renovate Dashboard',
-  assigneesFromCodeOwners: true,
-  reviewersFromCodeOwners: true,
-  suppressNotifications: [
-    'prIgnoreNotification',
+    "local>mikevader/renovate-config"
   ],
   packageRules: [
     {
