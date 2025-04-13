@@ -13,7 +13,6 @@ RUN \
   apt-get -qq install -y \
     iptables \
     iproute2 \
-    openresolv \
     inetutils-ping \
     sudo \
     ${EXTRA_INSTALL_ARG} \

@@ -15,8 +15,8 @@ RUN \
   apt-get -qq update \
   && \
   apt-get -qq install -y \
-    libicu66 \
-    libssl1.1 \
+    libicu74 \
+    libssl3t64 \
   && \
   case "${TARGETPLATFORM}" in \
     'linux/amd64') export ARCH='AMDx64' ;; \
