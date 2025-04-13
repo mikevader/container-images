@@ -26,7 +26,7 @@ RUN \
   case "${TARGETPLATFORM}" in \
     'linux/amd64') \
         curl -sL https://repositories.intel.com/graphics/intel-graphics.key | apt-key add - \
-        && echo 'deb [arch=amd64] https://repositories.intel.com/graphics/ubuntu focal main' > /etc/apt/sources.list.d/intel.list \
+        && echo 'deb [arch=amd64] https://repositories.intel.com/graphics/ubuntu noble main' > /etc/apt/sources.list.d/intel.list \
         && \
         export ARCH='amd64'; \
         export EXTRA_INSTALL_ARG='intel-opencl-icd=21.49.21786+i643~u20.04'; \

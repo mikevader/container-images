@@ -17,7 +17,7 @@ RUN \
   && \
   apt-get -qq install -y \
     ca-certificates \
-    libicu70 \
+    libicu74 \
     libsqlite3-0 \
     xmlstarlet \
   && \

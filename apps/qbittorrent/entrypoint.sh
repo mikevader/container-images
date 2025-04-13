@@ -3,7 +3,7 @@
 set -e
 
 #shellcheck disable=SC1091
-source "/shim/unmask.sh"
+source "/shim/umask.sh"
 source "/shim/vpn.sh"
 
 downloadsPath="/downloads"
@@ -50,4 +50,3 @@ exec /app/qbittorrent-nox \
     ${PROFILE_ARGS} \
     --webui-port="${WEBUI_PORT}" \
     ${EXTRA_ARGS}
-fi

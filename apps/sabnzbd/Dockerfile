@@ -13,7 +13,7 @@ RUN \
     p7zip-full \
     par2 \
     python3 \
-    python3-distutils \
+    python3-distutils-extra \
     python3-pkg-resources \
     unrar \
     unzip \
