@@ -8,7 +8,7 @@ port:
     listening: true
 
 http:
-  http://localhost:9117/UI/Login:
+  http://localhost:9117/UI/Dashboard:
     status: 200
     body:
     - '<title>Jackett</title>'
