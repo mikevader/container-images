@@ -5,7 +5,7 @@ process:
 
 port:
   tcp:9117:
-    listening: true
+    listening: false
     ip: []
 
 http:
