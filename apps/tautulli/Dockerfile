@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-jammy:rolling
+FROM ghcr.io/mikevader/ubuntu-noble:vnoble-20250127
 
 ARG VERSION
 USER root

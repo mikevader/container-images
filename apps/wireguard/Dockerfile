@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling
+FROM ghcr.io/mikevader/ubuntu-noble:vnoble-20250127
 
 ARG VERSION
 USER root
@@ -13,7 +13,6 @@ RUN \
   apt-get -qq install -y \
     iptables \
     iproute2 \
-    openresolv \
     inetutils-ping \
     sudo \
     ${EXTRA_INSTALL_ARG} \
