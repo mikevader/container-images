@@ -4,10 +4,6 @@ process:
     running: true
 
 port:
-  tcp:9117:
-    listening: true
-    ip:
-      - 0.0.0.0
   tcp6:9117:
     listening: true
     ip:
