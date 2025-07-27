@@ -4,11 +4,14 @@ process:
     running: true
 
 port:
-  tcp6:9117:
+  tcp:9117:
     listening: true
+    ip:
+      - 0.0.0.0
 
 http:
   http://localhost:9117/UI/Dashboard:
     status: 200
+    timeout: 1000
     body:
     - '<title>Jackett</title>'
