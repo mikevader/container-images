@@ -8,6 +8,10 @@ port:
     listening: true
     ip:
       - 0.0.0.0
+  tcp6:9117:
+    listening: true
+    ip:
+      - 0.0.0.0
 
 http:
   http://localhost:9117/UI/Dashboard:
@@ -15,3 +19,8 @@ http:
     timeout: 1000
     body:
     - '<title>Jackett</title>'
+  http://localhost:9117/UI/Login:
+    status: 200
+    timeout: 1000
+    body:
+      - '<title>Jackett</title>'
