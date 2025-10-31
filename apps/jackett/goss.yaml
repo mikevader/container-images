@@ -4,11 +4,18 @@ process:
     running: true
 
 port:
-  tcp6:9117:
-    listening: true
+  tcp:9117:
+    listening: false
+    ip: []
 
 http:
-  http://localhost:9117/UI/Login:
+  http://localhost:9117/UI/Dashboard:
     status: 200
+    timeout: 1000
     body:
     - '<title>Jackett</title>'
+  http://localhost:9117/UI/Login:
+    status: 200
+    timeout: 1000
+    body:
+      - '<title>Jackett</title>'
