@@ -1,21 +1,40 @@
----
-process:
-  jackett:
-    running: true
+#process:
+#  jackett:
+#    running: true
 
-port:
-  tcp:9117:
-    listening: false
-    ip: []
+#port:
+#  tcp:9117:
+#    listening: true
+#    ip:
+#      - 0.0.0.0
 
 http:
-  http://localhost:9117/UI/Dashboard:
+  jackett:
     status: 200
-    timeout: 1000
-    body:
-    - '<title>Jackett</title>'
-  http://localhost:9117/UI/Login:
+    url: "http://localhost:9119/UI/Dashboard"
+#    request-headers: # Set request header values
+#      - "Accept: text/html,application/xhtml+xml,application/xml"
+#    method: GET
+    allow-insecure: true
+    proxy: ""
+#    no-follow-redirects: false
+#
+#    timeout: 500
+#    body:
+#      - <title>Jackett</title>
+
+  google:
+    # required attributes
     status: 200
-    timeout: 1000
-    body:
-      - '<title>Jackett</title>'
+##    # optional attributes
+##    # defaults to hash key
+    url: "https://www.google.com"
+    allow-insecure: true
+#    timeout: 1000
+##    request-headers: # Set request header values
+##      - "Content-Type: text/html"
+##    headers: [] # Check http response headers for these patterns (e.g. "Content-Type: text/html")
+##    request-body: '{"key": "value"}' # request body
+#    body: [] # Check http response content for these patterns
+#    skip: false
+#    method: GET # http method
