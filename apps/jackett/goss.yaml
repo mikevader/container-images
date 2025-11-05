@@ -1,12 +1,10 @@
-#process:
-#  jackett:
-#    running: true
+process:
+  jackett:
+    running: true
 
-#port:
-#  tcp:9117:
-#    listening: true
-#    ip:
-#      - 0.0.0.0
+port:
+  tcp6:9117:
+    listening: true
 
 http:
   jackett:
@@ -23,13 +21,13 @@ http:
 #    body:
 #      - <title>Jackett</title>
 
-  google:
-    # required attributes
-    status: 200
+#  google:
+#    # required attributes
+#    status: 200
 ##    # optional attributes
 ##    # defaults to hash key
-    url: "https://www.google.com"
-    allow-insecure: true
+#    url: "https://www.google.com"
+#    allow-insecure: true
 #    timeout: 1000
 ##    request-headers: # Set request header values
 ##      - "Content-Type: text/html"
