@@ -12,6 +12,7 @@ if [[ -f /config/config.xml ]]; then
     current_api_key="$(xmlstarlet sel -t -v "//ApiKey" -nl /config/config.xml)"
     current_authentication_method="$(xmlstarlet sel -t -v "//AuthenticationMethod" -nl /config/config.xml)"
     current_authentication_required="$(xmlstarlet sel -t -v "//AuthenticationRequired" -nl /config/config.xml)"
+    current_authentication_type="$(xmlstarlet sel -t -v "//AuthenticationType" -nl /config/config.xml)"
     current_instance_name="$(xmlstarlet sel -t -v "//InstanceName" -nl /config/config.xml)"
     current_postgres_user="$(xmlstarlet sel -t -v "//PostgresUser" -nl /config/config.xml)"
     current_postgres_password="$(xmlstarlet sel -t -v "//PostgresPassword" -nl /config/config.xml)"
@@ -22,7 +23,7 @@ if [[ -f /config/config.xml ]]; then
 fi
 
 # Update config.xml with environment variables
-/usr/local/bin/envsubst < /app/config.xml.tmpl > /config/config.xml
+/usr/bin/envsubst < /app/config.xml.tmpl > /config/config.xml
 
 # Override configuation values from existing config.xml if there are no SONARR__ variables set
 [[ -z "${SONARR__LOG_LEVEL}" && -n "${current_log_level}" ]] && xmlstarlet edit --inplace --update //LogLevel -v "${current_log_level}" /config/config.xml
@@ -31,6 +32,7 @@ fi
 [[ -z "${SONARR__API_KEY}" && -n "${current_api_key}" ]] && xmlstarlet edit --inplace --update //ApiKey -v "${current_api_key}" /config/config.xml
 [[ -z "${SONARR__AUTHENTICATION_METHOD}" && -n "${current_authentication_method}" ]] && xmlstarlet edit --inplace --update //AuthenticationMethod -v "${current_authentication_method}" /config/config.xml
 [[ -z "${SONARR__AUTHENTICATION_REQUIRED}" && -n "${current_authentication_required}" ]] && xmlstarlet edit --inplace --update //AuthenticationRequired -v "${current_authentication_required}" /config/config.xml
+[[ -z "${SONARR__AUTHENTICATION_TYPE}" && -n "${current_authentication_type}" ]] && xmlstarlet edit --inplace --update //AuthenticationType -v "${current_authentication_type}" /config/config.xml
 [[ -z "${SONARR__INSTANCE_NAME}" && -n "${current_instance_name}" ]] && xmlstarlet edit --inplace --update //InstanceName -v "${current_instance_name}" /config/config.xml
 [[ -z "${SONARR__POSTGRES_USER}" && -n "${current_postgres_user}" ]] && xmlstarlet edit --inplace --update //PostgresUser -v "${current_postgres_user}" /config/config.xml
 [[ -z "${SONARR__POSTGRES_PASSWORD}" && -n "${current_postgres_password}" ]] && xmlstarlet edit --inplace --update //PostgresPassword -v "${current_postgres_password}" /config/config.xml

@@ -1,14 +1,15 @@
 <Config>
-  <LogLevel>${SONARR__LOG_LEVEL:-info}</LogLevel>
+  <LogLevel>${SONARR__LOG_LEVEL}</LogLevel>
   <UrlBase>${SONARR__URL_BASE}</UrlBase>
   <Branch>${SONARR__BRANCH}</Branch>
   <ApiKey>${SONARR__API_KEY}</ApiKey>
-  <AuthenticationMethod>${SONARR__AUTHENTICATION_METHOD:-None}</AuthenticationMethod>
+  <AuthenticationMethod>${SONARR__AUTHENTICATION_METHOD}</AuthenticationMethod>
   <AuthenticationRequired>${SONARR__AUTHENTICATION_REQUIRED}</AuthenticationRequired>
+  <AuthenticationType>${SONARR__AUTHENTICATION_TYPE}</AuthenticationType>
   <InstanceName>${SONARR__INSTANCE_NAME}</InstanceName>
   <PostgresUser>${SONARR__POSTGRES_USER}</PostgresUser>
   <PostgresPassword>${SONARR__POSTGRES_PASSWORD}</PostgresPassword>
-  <PostgresPort>${SONARR__POSTGRES_PORT:-5432}</PostgresPort>
+  <PostgresPort>${SONARR__POSTGRES_PORT}</PostgresPort>
   <PostgresHost>${SONARR__POSTGRES_HOST}</PostgresHost>
   <PostgresMainDb>${SONARR__POSTGRES_MAIN_DB}</PostgresMainDb>
   <PostgresLogDb>${SONARR__POSTGRES_MAIN_LOG}</PostgresLogDb>
