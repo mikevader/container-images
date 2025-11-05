@@ -4,9 +4,8 @@ process:
     running: true
 
 port:
-  tcp:8989:
+  tcp6:8989:
     listening: true
-    ip: [0.0.0.0]
 
 http:
     http://localhost:8989:
@@ -14,4 +13,4 @@ http:
         allow-insecure: false
         no-follow-redirects: false
         body:
-         - <span>Series</span>
+         - "<span>Series</span>"
