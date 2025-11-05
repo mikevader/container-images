@@ -12,5 +12,3 @@ http:
         status: 200
         allow-insecure: false
         no-follow-redirects: false
-        body:
-         - "<span>Series</span>"
