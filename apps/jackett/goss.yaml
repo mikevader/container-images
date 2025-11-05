@@ -21,19 +21,16 @@ http:
 #    body:
 #      - <title>Jackett</title>
 
-http:
   jackett1:
     status: 200
     url: "http://[::1]:9119/UI/Dashboard"
     allow-insecure: true
 
-http:
   jackett2:
     status: 200
     url: "http://localhost:9119"
     allow-insecure: true
 
-http:
   jackett3:
     status: 200
     url: "http://[::1]:9119"
