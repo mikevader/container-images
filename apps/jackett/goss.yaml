@@ -9,7 +9,7 @@ port:
 http:
   jackett:
     status: 200
-    url: "http://localhost:9119/UI/Dashboard"
+    url: "http://localhost:9117/UI/Dashboard"
 #    request-headers: # Set request header values
 #      - "Accept: text/html,application/xhtml+xml,application/xml"
 #    method: GET
@@ -23,17 +23,17 @@ http:
 
   jackett1:
     status: 200
-    url: "http://[::1]:9119/UI/Dashboard"
+    url: "http://[::1]:9117/UI/Dashboard"
     allow-insecure: true
 
   jackett2:
     status: 200
-    url: "http://localhost:9119"
+    url: "http://localhost:9117"
     allow-insecure: true
 
   jackett3:
     status: 200
-    url: "http://[::1]:9119"
+    url: "http://[::1]:9117"
     allow-insecure: true
 
 

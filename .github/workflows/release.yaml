@@ -157,18 +157,11 @@ jobs:
           cache-from: ${{ steps.prep.outputs.cache_from }}
           cache-to: ${{ steps.prep.outputs.cache_to }}
 
-
-      - name: Run GOSS tests prep
-        if: ${{ steps.prep.outputs.goss == 'true' }}
-        run: |
-          goss add port 9117
-
-
       # Run GOSS tests if included with the container
       - name: Run GOSS tests
         if: ${{ steps.prep.outputs.goss == 'true' }}
         env:
-          GOSS_FILES_PATH: ./${{ steps.prep.outputs.category }}/${{ matrix.container }}
+          GOSS_FILE: ./${{ steps.prep.outputs.category }}/${{ matrix.container }}/goss.yaml
         run: |
           dgoss run ghcr.io/${{ github.repository_owner }}/${{ matrix.container }}:test
 
