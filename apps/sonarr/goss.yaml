@@ -1,12 +1,17 @@
 ---
 process:
-  mono:
+  Sonarr:
     running: true
 
 port:
   tcp:8989:
     listening: true
+    ip: [0.0.0.0]
 
 http:
-  http://localhost:8989:
-    status: 200
+    http://localhost:8989:
+        status: 200
+        allow-insecure: false
+        no-follow-redirects: false
+        body:
+         - <span>Series</span>
