@@ -22,7 +22,7 @@ RUN \
     xmlstarlet \
   && \
   curl -fsSL -o /tmp/sonarr.tar.gz \
-    "https://download.sonarr.tv/v3/${SONARR__BRANCH}/${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux.tar.gz" \
+    "https://github.com/Sonarr/Sonarr/releases/download/v${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux-x64.tar.gz" \
   && tar ixzf /tmp/sonarr.tar.gz -C /app --strip-components 1 \
   && \
   rm -rf \
