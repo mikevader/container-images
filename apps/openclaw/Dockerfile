@@ -10,6 +10,11 @@ RUN \
   && \
   apt-get -qq install -y \
     curl \
+    nano \
+    jq \
+    yq \
+    ripgrep \
+    gh \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && apt-get autoremove -y \
   && apt-get clean \
