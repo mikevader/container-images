@@ -19,7 +19,7 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/
 
-USER node
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
 RUN npm install -g @anthropic-ai/claude-code@latest
+
+USER node
+
