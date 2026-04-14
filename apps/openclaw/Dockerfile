@@ -21,4 +21,4 @@ RUN \
 
 USER node
 
-RUN curl -fsSL https://claude.ai/install.sh | bash
+RUN npm install -g @anthropic-ai/claude-code@latest
