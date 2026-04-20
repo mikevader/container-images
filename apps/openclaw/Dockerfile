@@ -1,5 +1,5 @@
 ARG VERSION
-FROM golang:1.25 AS gogbuilder
+FROM golang:1.26 AS gogbuilder
 
 RUN git clone https://github.com/steipete/gogcli.git && \
   cd gogcli && \
@@ -8,7 +8,7 @@ RUN git clone https://github.com/steipete/gogcli.git && \
   ls -la . && \
   ls -al bin
 
-
+ARG VERSION
 FROM ghcr.io/openclaw/openclaw:${VERSION}
 
 USER root
