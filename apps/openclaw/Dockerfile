@@ -1,5 +1,5 @@
 ARG VERSION
-FROM golang:1.25 as gog-builder
+FROM golang:1.25 AS gogbuilder
 
 RUN git clone https://github.com/steipete/gogcli.git && \
   cd gogcli && \
@@ -12,7 +12,7 @@ USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install gogcli
-COPY --from=gog-builder /go/gogcli/gog /usr/local/bin/gog
+COPY --from=gogbuilder /go/gogcli/gog /usr/local/bin/gog
 
 # hadolint ignore=DL3003,DL3008,DL3013,DL3015,SC2086
 RUN \
