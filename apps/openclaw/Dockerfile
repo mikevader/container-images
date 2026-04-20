@@ -3,7 +3,10 @@ FROM golang:1.25 AS gogbuilder
 
 RUN git clone https://github.com/steipete/gogcli.git && \
   cd gogcli && \
-  make
+  make && \
+  pwd && \
+  ls -la . && \
+  ls -al bin
 
 
 FROM ghcr.io/openclaw/openclaw:${VERSION}
