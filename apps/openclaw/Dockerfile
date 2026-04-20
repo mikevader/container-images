@@ -9,7 +9,7 @@ RUN git clone https://github.com/steipete/gogcli.git && \
   ls -al bin
 
 ARG VERSION
-FROM ghcr.io/openclaw/openclaw:${VERSION}
+FROM ghcr.io/openclaw/openclaw:${VERSION:2026.4.15}
 
 USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
