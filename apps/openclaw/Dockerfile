@@ -1,5 +1,6 @@
 ARG VERSION
-FROM golang:1.26 AS gogbuilder
+FROM golang:1.26 AS builder
+LABEL stage=gobuilder
 
 WORKDIR /build
 
@@ -7,7 +8,7 @@ RUN git clone https://github.com/steipete/gogcli.git && \
   cd gogcli && \
   make && \
   pwd && \
-  ls -al bin
+  ls -al /build/gogcli/gog
 
 ARG VERSION
 FROM ghcr.io/openclaw/openclaw:${VERSION:-2026.4.15}
@@ -16,7 +17,7 @@ USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install gogcli
-COPY --from=gogbuilder /build/gogcli/gog /usr/local/bin/gog
+COPY --from=builder /build/gogcli/gog /usr/local/bin/gog
 
 # hadolint ignore=DL3003,DL3008,DL3013,DL3015,SC2086
 RUN \
