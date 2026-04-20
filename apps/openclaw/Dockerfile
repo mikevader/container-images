@@ -1,8 +1,20 @@
+FROM golang as gog-builder
+
+RUN git clone https://github.com/steipete/gogcli.git && \
+  cd gogcli && \
+  make && \
+  pwd && \
+  ls -la bin
+
+
 ARG VERSION
 FROM ghcr.io/openclaw/openclaw:${VERSION}
 
 USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
+# Install gogcli
+COPY --from=gog-builder /go/gogcli/gogcli /usr/local/bin/gog
 
 # hadolint ignore=DL3003,DL3008,DL3013,DL3015,SC2086
 RUN \
