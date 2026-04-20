@@ -21,11 +21,14 @@ RUN \
   && \
   apt-get -qq install -y \
     ca-certificates \
-    mono-complete \
-    ca-certificates-mono \
     libmediainfo0v5 \
     xmlstarlet \
     gettext \
+  && \
+  case "${TARGETPLATFORM}" in \
+    'linux/amd64') export ARCH='x64' ;; \
+    'linux/arm64') export ARCH='arm64' ;; \
+  esac \
   && \
   curl -fsSL -o /tmp/sonarr.tar.gz \
     "https://github.com/Sonarr/Sonarr/releases/download/v${VERSION}/Sonarr.${SONARR__BRANCH}.${VERSION}.linux-x64.tar.gz" \
@@ -36,8 +39,6 @@ RUN \
   && \
   printf "UpdateMethod=docker\nBranch=%s\nPackageVersion=%s\nPackageAuthor=[Team mikevader](https://github.com/mikevader)" "${SONARR__BRANCH}" "${VERSION}" > /app/package_info \
   && \
-  gpgconf --kill all \
-  && apt-get remove -y gnupg \
   && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
   && apt-get autoremove -y \
   && apt-get clean \
