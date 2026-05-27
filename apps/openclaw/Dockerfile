@@ -39,7 +39,7 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/
 
-RUN npm install -g @anthropic-ai/claude-code@latest
+RUN npm install -g @anthropic-ai/claude-code@2.1.152
 
 USER node
 
