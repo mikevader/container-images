@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-jammy:rolling@sha256:1d6b3fa6d6131aa9a46a87ffe277b262a1d9160b75c95df2986ed0914653a1bf
+FROM ghcr.io/mikevader/ubuntu-jammy:rolling@sha256:0e78aebe297fbad17d65e59d86b0461c70b09c7c407855626426b1fec6226263
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
