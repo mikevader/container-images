@@ -15,7 +15,7 @@ on:
 
 env:
   # How long to sleep before running the tests (gives the application time to start)
-  GOSS_SLEEP: 30
+  GOSS_SLEEP: 60
 
 # Detect which folders in project-root (which contain the containers) contain changes
 jobs:
@@ -93,13 +93,14 @@ jobs:
           else
             echo "goss=false" >> "$GITHUB_OUTPUT"
           fi
+
+          echo "cache_from=type=gha" >> "$GITHUB_OUTPUT"
+
           if [ "${{github.event_name}}" == "pull_request" ]; then
             echo "push=false" >> "$GITHUB_OUTPUT"
-            echo "cache_from=type=gha" >> "$GITHUB_OUTPUT"
             echo "cache_to=" >> "$GITHUB_OUTPUT"
           else
             echo "push=true" >> "$GITHUB_OUTPUT"
-            echo "cache_from=type=gha" >> "$GITHUB_OUTPUT"
             echo "cache_to=type=gha,mode=max" >> "$GITHUB_OUTPUT"
           fi
 
@@ -138,7 +139,7 @@ jobs:
         uses: e1himself/goss-installation-action@v1.3.0
         if: ${{ steps.prep.outputs.goss == 'true' }}
         with:
-          version: v0.3.16
+          version: v0.4.8
 
       # Creates a local build to run tests on
       - name: Build and Load local test-container
