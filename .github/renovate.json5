@@ -6,7 +6,9 @@
     'mergeConfidence:all-badges',
   ],
   timezone: 'Europe/Zurich',
-  dependencyDashboardTitle: 'Renovate Dashboard',
+  dependencyDashboard: {
+    title: 'Renovate Dashboard',
+  },
   assigneesFromCodeOwners: true,
   reviewersFromCodeOwners: true,
   suppressNotifications: [
