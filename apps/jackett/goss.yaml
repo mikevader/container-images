@@ -7,8 +7,10 @@ port:
   tcp6:9117:
     listening: true
 
+# /UI/Login now redirects through a cookie check (TestCookie -> 400 without
+# cookies), so probe the health endpoint instead.
 http:
-  http://localhost:9117/UI/Login:
+  http://localhost:9117/health:
     status: 200
     body:
-    - '<title>Jackett</title>'
+    - '"status":"OK"'

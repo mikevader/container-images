@@ -1,16 +1,15 @@
 ---
-# # TODO fix this test
-# process:
-#   Plex Media Serv:
-#     running: true
+process:
+  Plex Media Serv:
+    running: true
 
+# Plex binds 32400 on IPv4 only (0.0.0.0)
 port:
-  tcp6:32400:
+  tcp:32400:
     listening: true
 
-# # TODO fix this test
-# http:
-#   http://localhost:32400:
-#     status: 200
-#     body:
-#     - '<title>Plex</title>'
+http:
+  http://localhost:32400/identity:
+    status: 200
+    body:
+    - 'MediaContainer'
