@@ -11,7 +11,7 @@ RUN git clone https://github.com/steipete/gogcli.git && \
   ls -al /build/gogcli/bin/gog
 
 ARG VERSION
-FROM nousresearch/hermes-agent:${VERSION:-v2026.9.14}
+FROM nousresearch/hermes-agent:v${VERSION:-2026.9.14}
 
 USER root
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
