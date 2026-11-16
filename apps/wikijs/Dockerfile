@@ -16,23 +16,19 @@ ENV NODE_ENV="production"
 # install supporting software
 RUN \
   echo "**** install build packages ****" && \
-  curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
+  curl -fsSL https://deb.nodesource.com/setup_20.x | bash - && \
   apt-get update -qq && \
   apt-get install -qq --no-install-recommends \
     gcc \
     g++ \
     make \
     nodejs \
-    python && \
+    python3 && \
   echo "**** download wiki.js ****" && \
   mkdir -p /app/wiki /data && \
-  if [ -z ${WIKIJS_RELEASE} ]; then \
-    WIKIJS_RELEASE=$(curl -sNX GET "https://api.github.com/repos/Requarks/wiki/releases/latest" \
-    | awk '/tag_name/{print $4;exit}' FS='[""]'); \
-  fi && \
-  curl -No \
-    /tmp/wiki.tar.gz -L \
-    "https://github.com/Requarks/wiki/releases/download/${WIKIJS_RELEASE}/wiki-js.tar.gz" && \
+  curl -fsSLo \
+    /tmp/wiki.tar.gz \
+    "https://github.com/Requarks/wiki/releases/download/v${VERSION}/wiki-js.tar.gz" && \
   echo "**** install wiki.js ****" && \
   tar xf \
     /tmp/wiki.tar.gz \
@@ -47,8 +43,7 @@ RUN \
   apt-get remove -qq \
     gcc \
     g++ \
-    make \
-    python && \
+    make && \
   apt-get purge -qq --auto-remove -o APT::AutoRemove::RecommendsImportant=false && \
   apt-get autoremove -qq && \
   apt-get clean -qq && \
