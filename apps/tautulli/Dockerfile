@@ -7,6 +7,8 @@ ENV TAUTULLI_DOCKER="True"
 # hadolint ignore=DL3008,DL3013,DL3015,SC2086
 RUN \
   export EXTRA_INSTALL_ARG="build-essential libssl-dev libffi-dev python3-dev python3-pip"; \
+  # noble marks the system python as externally managed (PEP 668)
+  export PIP_BREAK_SYSTEM_PACKAGES=1; \
   apt-get -qq update \
   && \
   apt-get -qq install -y \
