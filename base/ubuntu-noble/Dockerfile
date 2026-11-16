@@ -1,5 +1,14 @@
 ARG VERSION
 
+# drone/envsubst (supports ${VAR:-default}, unlike GNU gettext envsubst) is used
+# by app entrypoints to render config templates, as in the focal/jammy bases.
+FROM --platform=$BUILDPLATFORM golang:1.27 AS builder
+ARG TARGETOS
+ARG TARGETARCH
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} \
+    go install -ldflags="-s -w" github.com/drone/envsubst/cmd/envsubst@v1.0.3 \
+  && cp "$(find /go/bin -type f -name envsubst)" /envsubst
+
 FROM ubuntu:${VERSION}
 
 ARG VERSION
@@ -69,6 +78,7 @@ RUN \
     /var/tmp/*
 
 COPY ./base/ubuntu-noble/shim /shim
+COPY --from=builder /envsubst /usr/local/bin/envsubst
 
 USER lucy
 
