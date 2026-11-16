@@ -6,14 +6,15 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # hadolint ignore=DL3003,DL3008,DL3013,DL3015,SC2086
 RUN \
-  export EXTRA_INSTALL_ARG="build-essential libffi-dev libssl-dev python3-dev python3-pip"; \
+  export EXTRA_INSTALL_ARG="build-essential jq libffi-dev libssl-dev python3-dev python3-pip"; \
+  # noble marks the system python as externally managed (PEP 668)
+  export PIP_BREAK_SYSTEM_PACKAGES=1; \
   apt-get -qq update \
   && \
   apt-get -qq install -y \
     p7zip-full \
     par2 \
     python3 \
-    python3-distutils-extra \
     python3-pkg-resources \
     unrar \
     unzip \
