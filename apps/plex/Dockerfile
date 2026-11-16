@@ -1,4 +1,4 @@
-FROM ghcr.io/mikevader/ubuntu-focal:rolling
+FROM ghcr.io/mikevader/ubuntu-noble:latest
 
 ARG TARGETPLATFORM
 ARG BUILDPLATFORM
@@ -25,11 +25,8 @@ RUN \
   && \
   case "${TARGETPLATFORM}" in \
     'linux/amd64') \
-        curl -sL https://repositories.intel.com/graphics/intel-graphics.key | apt-key add - \
-        && echo 'deb [arch=amd64] https://repositories.intel.com/graphics/ubuntu focal main' > /etc/apt/sources.list.d/intel.list \
-        && \
         export ARCH='amd64'; \
-        export EXTRA_INSTALL_ARG='intel-opencl-icd=21.49.21786+i643~u20.04'; \
+        export EXTRA_INSTALL_ARG='intel-opencl-icd'; \
     ;; \
     'linux/arm64') \
         export ARCH='arm64'; \

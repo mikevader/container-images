@@ -11,4 +11,4 @@ http:
   http://localhost:8080:
     status: 200
     body:
-    - '<title>qBittorrent Web UI</title>'
+    - '<title>qBittorrent WebUI</title>'
